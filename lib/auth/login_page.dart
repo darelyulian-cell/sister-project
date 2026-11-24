@@ -44,84 +44,146 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      backgroundColor: Colors.white,
+      body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(25),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30),
-
-              const Icon(
-                Icons.school,
-                color: AppTheme.maroon,
-                size: 85,
-              ),
-
               const SizedBox(height: 20),
 
+              
               const Text(
-                'SISTER SKANSIKA',
+                'SISTER\nSKANSIKA',
                 style: TextStyle(
-                  fontSize: 27,
+                  fontSize: 36,
                   fontWeight: FontWeight.bold,
-                  color: AppTheme.maroon,
+                  color: AppTheme.maroon,                                                                       
+                  height: 1.1,
                 ),
               ),
+              const SizedBox(height: 12),
 
-              const Text(
-                'Sistem Informasi Terpadu',
-                style: TextStyle(color: Colors.grey),
+              
+              Container(
+                width: 40,
+                height: 4,
+                color: AppTheme.maroon, 
               ),
+              const SizedBox(height: 16),
 
-              const SizedBox(height: 40),
+              
+              const Text(
+                'Sistem Informasi Sekolah Terintegrasi\nSMK Negeri 1 Bukateja',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF6B7280),
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: 48),
 
+              
+              const Text(
+                'NIS / USERNAME',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF4B5563),
+                  letterSpacing: 1.2,
+                ),
+              ),
               TextField(
                 controller: usernameController,
+                style: const TextStyle(fontSize: 16, color: Colors.black),
                 decoration: const InputDecoration(
-                  labelText: 'NIS / Username',
-                  prefixIcon: Icon(Icons.person),
-                  border: OutlineInputBorder(),
+                  hintText: '9224',
+                  hintStyle: TextStyle(color: Color(0xFF9CA3AF)),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFFE5E7EB)),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppTheme.maroon),
+                  ),
                 ),
               ),
+              const SizedBox(height: 32),
 
-              const SizedBox(height: 20),
-
+              
+              const Text(
+                'PASSWORD',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF4B5563),
+                  letterSpacing: 1.2,
+                ),
+              ),
               TextField(
                 controller: passwordController,
                 obscureText: obscurePassword,
+                style: const TextStyle(fontSize: 16, color: Colors.black),
                 decoration: InputDecoration(
-                  labelText: 'Password',
-                  prefixIcon: const Icon(Icons.lock),
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      obscurePassword
-                          ? Icons.visibility_off
-                          : Icons.visibility,
-                    ),
+                  hintText: '••••••••••',
+                  hintStyle: const TextStyle(color: Color(0xFF9CA3AF)),
+                  enabledBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFFE5E7EB)),
+                  ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppTheme.maroon),
+                  ),
+                  suffixIcon: TextButton(
                     onPressed: () {
                       setState(() {
                         obscurePassword = !obscurePassword;
                       });
                     },
+                    child: Text(
+                      obscurePassword ? 'Lihat' : 'Sembunyikan',
+                      style: const TextStyle(
+                        color: AppTheme.maroon, 
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),
+              const SizedBox(height: 48),
 
-              const SizedBox(height: 25),
-
-              ElevatedButton(
-                onPressed: login,
-                child: const Text('MASUK'),
+            
+              SizedBox(
+                width: double.infinity,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: login,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppTheme.maroon, 
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Text(
+                    'Masuk',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
               ),
+              const SizedBox(height: 24),
 
-              const SizedBox(height: 20),
-
-              const Text(
-                'SMK NEGERI 1 BUKATEJA',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 12,
+             
+              const Center(
+                child: Text(
+                  'Lupa password? Hubungi wali kelas.',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Color(0xFF6B7280),
+                  ),
                 ),
               ),
             ],
